@@ -2,31 +2,16 @@ import { useRef, useEffect } from "react";
 import { Engine, Scene } from "@babylonjs/core";
 import { BabylonjsProps } from "babylonjs-hook";
 import styled from "styled-components";
-import { useRecoilState } from "recoil";
-import { AisWheelReady, Aphase } from "../../utils/recoilStore";
 
-const SCanvas = styled.canvas<{ $phase: number }>`
-  position: absolute;
-  width: 41%;
-  height: 112.5%;
-  z-index: 0;
-  background-color: transparent;
-  opacity: ${(prop) => (prop.$phase == 0 || prop.$phase == 3 ? 1 : 0.001)};
-  transition: opacity 0.5s ease-out, transform 2s;
+const SCanvas = styled.canvas`
+  width: 100%;
+  height: 100%;
   outline: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 `;
 
 function BabylonCanvas({ onSceneReady, onRender }: BabylonjsProps) {
-  const [phase, setPhase] = useRecoilState(Aphase);
   const reactCanvas = useRef<HTMLCanvasElement>(null);
-  const [isWheelReady, setIsWheelReady] = useRecoilState(AisWheelReady);
-  useEffect(() => {
-    setIsWheelReady(false);
-    setTimeout(() => {
-      setIsWheelReady(true);
-    }, 1000);
-  }, []);
+
   useEffect(() => {
     const { current: canvas } = reactCanvas;
 
@@ -56,18 +41,7 @@ function BabylonCanvas({ onSceneReady, onRender }: BabylonjsProps) {
     };
   }, [onRender, onSceneReady]);
 
-  return (
-    <SCanvas
-      $phase={phase}
-      onWheel={(e) => {
-        if (isWheelReady) {
-          if (e.deltaY > 0) setPhase((prev) => (prev != 3 ? prev + 1 : prev));
-          else setPhase((prev) => (prev != 0 ? prev - 1 : prev));
-        }
-      }}
-      ref={reactCanvas}
-    />
-  );
+  return <SCanvas ref={reactCanvas} />;
 }
 
 export default BabylonCanvas;

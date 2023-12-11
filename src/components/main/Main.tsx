@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import Section1 from "./section/Section4";
+import Section1 from "./section/Section1";
 import Section2 from "./section/Section2";
 import Section3 from "./section/Section3";
 import Section4 from "./section/Section4";
 const Smain = styled.main`
-  border: 1px solid black;
-  width: 80vw;
+  width: 70vw;
   margin: 0 auto;
+  margin-top: 150px;
 `;
 function Main() {
   return (
