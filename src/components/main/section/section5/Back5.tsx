@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Card from "./Card";
 import projectData from "../../../../projectData";
@@ -7,7 +6,7 @@ const Ssection = styled.section`
   position: sticky;
   top: 0;
   height: 100dvh;
-  margin-top: 500px;
+  margin-top: 300px;
   background-image: url("../background/paper.jpg");
   isolation: isolate;
 
