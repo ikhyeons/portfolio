@@ -1,23 +1,28 @@
-import React from "react";
 import styled from "styled-components";
 
-import Section1 from "./section/Section1";
-import Section2 from "./section/Section2";
-import Section3 from "./section/Section3";
-import Section4 from "./section/Section4";
+import Back1 from "./section/section1/Back1";
+import Back2 from "./section/section2/Back2";
+import Back3 from "./section/section3/Back3";
+import Back5 from "./section/section5/Back5";
+import Back6 from "./section/section6/Back6";
+import Sides from "../side/Side";
+
 const Smain = styled.main`
-  width: 70vw;
+  width: 81vw;
   margin: 0 auto;
-  margin-top: 150px;
 `;
 function Main() {
   return (
-    <Smain>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-    </Smain>
+    <>
+      <Smain>
+        <Back1 />
+        <Back2 />
+        <Back3 />
+        <Back5 />
+        <Back6 />
+      </Smain>
+      <Sides />
+    </>
   );
 }
 

@@ -76,8 +76,8 @@ function BabylonWrap() {
     scene.clearColor = new Color4(0, 0, 0, 0.0);
 
     camera.alpha = -0.6 + 0.6 * Math.sin(frametime * 0.001 * Math.PI);
-    camera.beta = 1.5 + 0.05 * Math.sin(frametime * 0.001 * Math.PI);
-    camera.radius = 7;
+    camera.beta = 1.2 + 0.05 * Math.sin(frametime * 0.001 * Math.PI);
+    camera.radius = 9.1;
 
     if (frametime % 500 == 0) {
       light.diffuse = new Color3(0, 0, 0);
