@@ -31,7 +31,7 @@ const StoggleBtn = styled.input`
   &:checked + label {
     &:before {
       transform: translateX(100%);
-      background: yellow;
+      background: rgb(180, 180, 30);
     }
   }
 `;
