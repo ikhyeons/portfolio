@@ -48,9 +48,9 @@ function Section6() {
   return (
     <Ssection>
       <Thank>Thank You</Thank>
-      <BabylonBox>
+      {/* <BabylonBox>
         <BabylonWrap />
-      </BabylonBox>
+      </BabylonBox> */}
       <Info>
         <span>skantrkwl789@naver.com</span>
         <span>https://github.com/ikhyeons</span>
