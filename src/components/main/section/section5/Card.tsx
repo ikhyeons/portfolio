@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import { AModalState } from "../../../../utils/recoilStore/atom";
+import { useRecoilState } from "recoil";
+import { useEffect } from "react";
 const Scard = styled.div`
   position: relative;
   display: flex;
@@ -19,9 +21,31 @@ const Stitle = styled.div`
   font-size: 2rem;
 `;
 function Card({ data }: { data?: IprojectData }) {
+  const [modalState, setModalState] = useRecoilState(AModalState);
+  function paperClickHandler() {
+    setModalState({
+      isOn: true,
+      type: "project",
+      detail: data?.title ? data.title : "More",
+    });
+  }
+  useEffect(() => {
+    console.log(modalState.detail);
+  }, [modalState]);
+
   return (
-    <Scard>
-      <Stitle>{data?.title ? data.title : "More"}</Stitle>
+    <Scard
+      onClick={() => {
+        paperClickHandler();
+      }}
+    >
+      <Stitle
+        onClick={() => {
+          paperClickHandler();
+        }}
+      >
+        {data?.title ? data.title : "More"}
+      </Stitle>
     </Scard>
   );
 }

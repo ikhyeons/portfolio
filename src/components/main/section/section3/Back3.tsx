@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
+import { AModalState } from "../../../../utils/recoilStore/atom";
+import { useRecoilState } from "recoil";
+import { skillList } from "../../../../skillData";
 const Ssection = styled.section`
   position: sticky;
   top: 80dvh;
@@ -28,7 +30,7 @@ const Spapers = styled.div`
   top: 70dvh;
   width: 100%;
 `;
-const Spaper = styled.div<{ $type: "fe" | "be" | "el" }>`
+const Spaper = styled.div<{ $type: "Front-End" | "Back-End" | "else" }>`
   position: absolute;
   padding: 20px;
   font-weight: bold;
@@ -45,11 +47,11 @@ const Spaper = styled.div<{ $type: "fe" | "be" | "el" }>`
       -50%,
       ${(prop) => {
         switch (prop.$type) {
-          case "fe":
+          case "Front-End":
             return "-40%";
-          case "be":
+          case "Back-End":
             return "-20%";
-          case "el":
+          case "else":
             return "0";
           default:
             return "default";
@@ -58,17 +60,18 @@ const Spaper = styled.div<{ $type: "fe" | "be" | "el" }>`
     );
   transition: transform 0.2s;
   &:after {
+    padding-bottom: 5px;
     font-size: 1rem;
     font-weight: normal;
     text-align: center;
     position: absolute;
     right: ${(prop) => {
       switch (prop.$type) {
-        case "fe":
+        case "Front-End":
           return "10px";
-        case "be":
+        case "Back-End":
           return "65px";
-        case "el":
+        case "else":
           return "120px";
         default:
           return "default";
@@ -79,11 +82,11 @@ const Spaper = styled.div<{ $type: "fe" | "be" | "el" }>`
     height: 40px;
     background: ${(prop) => {
       switch (prop.$type) {
-        case "fe":
+        case "Front-End":
           return "green";
-        case "be":
+        case "Back-End":
           return "#ff544a";
-        case "el":
+        case "else":
           return "#ff44ff";
         default:
           return "default";
@@ -99,11 +102,11 @@ const Spaper = styled.div<{ $type: "fe" | "be" | "el" }>`
       -50%,
       ${(prop) => {
         switch (prop.$type) {
-          case "fe":
+          case "Front-End":
             return "-50%";
-          case "be":
+          case "Back-End":
             return "-30%";
-          case "el":
+          case "else":
             return "-10%";
           default:
             return "default";
@@ -114,12 +117,24 @@ const Spaper = styled.div<{ $type: "fe" | "be" | "el" }>`
 `;
 
 function Section3() {
+  const [modalState, setModalState] = useRecoilState(AModalState);
+  function paperClickHandler(detail: SkillDetail) {
+    setModalState({ isOn: true, type: "skill", detail: detail });
+  }
   return (
     <>
       <Spapers>
-        <Spaper $type="fe">Front-End</Spaper>
-        <Spaper $type="be">Back-End</Spaper>
-        <Spaper $type="el">else</Spaper>
+        {skillList.map((data, i) => (
+          <Spaper
+            key={i}
+            $type={data.detail}
+            onClick={() => {
+              paperClickHandler(data.detail);
+            }}
+          >
+            {data.detail}
+          </Spaper>
+        ))}
       </Spapers>
       <Ssection>Skills</Ssection>;
     </>

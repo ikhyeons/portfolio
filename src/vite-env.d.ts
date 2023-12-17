@@ -14,6 +14,14 @@ declare global {
       img: string;
     }[];
   }
+
+  type SkillDetail = "Front-End" | "Back-End" | "else";
+
+  interface ImodalState {
+    isOn: boolean;
+    type: null | "skill" | "project";
+    detail: SkillDetail | IprojectData.title | null;
+  }
 }
 
 export default {};

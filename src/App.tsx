@@ -3,6 +3,7 @@ import ModalWrap from "./components/modal/ModalWrap";
 function App() {
   return (
     <>
+      <ModalWrap />
       <Main />
     </>
   );

@@ -1,8 +1,8 @@
-import { atom } from "recoil";
+import { atom, RecoilState } from "recoil";
 
-export const AisOn = atom<React.RefObject<HTMLDivElement> | null>({
+export const AModalState = atom<ImodalState>({
   key: "modal",
-  default: null,
+  default: { isOn: false, type: null, detail: null },
 });
 
 export default {};
