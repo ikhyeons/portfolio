@@ -9,8 +9,7 @@ const SGage = styled.div`
   display: flex;
   position: relative;
 `;
-const SBar = styled.div<{ gage: number; $active: boolean }>`
-  display: ${(props) => (props.$active ? null : "none")};
+const SBar = styled.div<{ gage: number }>`
   animation: ${gageUp} 2s;
   width: ${(props) => props.gage}%;
   height: 100%;
@@ -35,10 +34,9 @@ const SBar = styled.div<{ gage: number; $active: boolean }>`
 `;
 
 function Gage({ gage }: { gage: number }) {
-  const [active] = useDelay([500]);
   return (
     <SGage>
-      <SBar gage={gage} $active={active} />
+      <SBar gage={gage} />
     </SGage>
   );
 }
