@@ -5,6 +5,7 @@ import { useEffect } from "react";
 const Scard = styled.div`
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -19,6 +20,11 @@ const Scard = styled.div`
 
 const Stitle = styled.div`
   font-size: 2rem;
+`;
+
+const Speriod = styled.div`
+  font-weight: bold;
+  color: #ff577a;
 `;
 function Card({ data }: { data?: IprojectData }) {
   const [modalState, setModalState] = useRecoilState(AModalState);
@@ -46,6 +52,8 @@ function Card({ data }: { data?: IprojectData }) {
       >
         {data?.title ? data.title : "More"}
       </Stitle>
+      <br />
+      <Speriod>{data?.period}</Speriod>
     </Scard>
   );
 }

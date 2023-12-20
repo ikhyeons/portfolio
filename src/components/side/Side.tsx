@@ -73,8 +73,20 @@ function Sides() {
         <PhaseDropDown />
       </Stl>
       <Str>
-        <LinkBtn>GH</LinkBtn>
-        <LinkBtn>Blog</LinkBtn>
+        <LinkBtn
+          onClick={() => {
+            window.open("https://github.com/ikhyeons");
+          }}
+        >
+          GH
+        </LinkBtn>
+        <LinkBtn
+          onClick={() => {
+            window.open("https://blog.ikhyeons.net/resume");
+          }}
+        >
+          Blog
+        </LinkBtn>
       </Str>
       <ThemeBtn>
         <ToggleBtn />

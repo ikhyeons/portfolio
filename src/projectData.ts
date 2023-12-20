@@ -1,6 +1,7 @@
 export const projectData: IprojectData[] = [
   {
     title: "개인 블로그 프로젝트",
+    type: "blog",
     img: "블로그.png",
     period: "2023.06.29 ~ 10.01",
     skills: {
@@ -32,6 +33,7 @@ export const projectData: IprojectData[] = [
   },
   {
     title: "자취방 양도 플랫폼",
+    type: "realEstate",
     img: "자취방양도.png",
     period: "2022.12.16 ~ 23.04.22",
     skills: {
@@ -84,6 +86,7 @@ export const projectData: IprojectData[] = [
   },
   {
     title: "협업 웹",
+    type: "collab",
     period: "2022.05.18 ~ 10.06",
     img: "협업툴.png",
     skills: {
@@ -120,6 +123,7 @@ export const projectData: IprojectData[] = [
   },
   {
     title: "동물 분양 플랫폼",
+    type: "animal",
     img: "동물분양.png",
     period: "2023.05.01 ~ 07.02",
     skills: {
@@ -145,6 +149,7 @@ export const projectData: IprojectData[] = [
   },
   {
     title: "포트폴리오",
+    type: "portfolio",
     img: "포트폴리오.png",
     period: "2023.11.16 ~ 11.24",
     skills: {

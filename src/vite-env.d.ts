@@ -3,6 +3,7 @@
 declare global {
   interface IprojectData {
     title: string;
+    type: string;
     period: string;
     img: string;
     skills: { fe: string[]; be: string[]; deploy: string[] };
