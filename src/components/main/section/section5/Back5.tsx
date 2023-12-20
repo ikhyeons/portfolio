@@ -6,7 +6,7 @@ const Ssection = styled.section`
   position: sticky;
   top: 0;
   height: 100dvh;
-  margin-top: 300px;
+  margin-top: 100px;
   background-image: url("../background/paper.jpg");
   isolation: isolate;
 

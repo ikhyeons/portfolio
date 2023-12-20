@@ -1,22 +1,10 @@
 import styled from "styled-components";
 import ScircleBtn from "../buttons/CircleBtn";
 import ToggleBtn from "../buttons/ToggleBtn";
-import PhaseDropDown from "../buttons/PhaseDropDown";
 
-const Stl = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 50px 60px;
-  z-index: 3;
-`;
-const Str = styled.div`
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  margin: 50px 30px;
+const SLink = styled.div`
+  margin-bottom: 30px;
   display: flex;
-  z-index: 3;
 `;
 
 const LinkBtn = styled(ScircleBtn)`
@@ -28,18 +16,10 @@ const LinkBtn = styled(ScircleBtn)`
   color: #ff577a;
 `;
 
-const ThemeBtn = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 50px 80px;
-  transform: translateX(-50%);
-`;
-
 const TopBtn = styled(ScircleBtn)`
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: 20px;
   width: 60px;
   height: 60px;
   margin: 50px 70px;
@@ -50,7 +30,8 @@ const TopBtn = styled(ScircleBtn)`
 
 const Phase = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
   align-items: center;
   position: fixed;
   left: 0;
@@ -65,33 +46,42 @@ const Phase = styled.div`
   line-height: 10px;
 `;
 
+const StoggleWrap = styled.div`
+  margin-top: 50px;
+`;
 function Sides() {
   return (
     <>
-      <Phase>ABOUT ME</Phase>
-      <Stl>
-        <PhaseDropDown />
-      </Stl>
-      <Str>
-        <LinkBtn
-          onClick={() => {
-            window.open("https://github.com/ikhyeons");
-          }}
-        >
-          GH
-        </LinkBtn>
-        <LinkBtn
-          onClick={() => {
-            window.open("https://blog.ikhyeons.net/resume");
-          }}
-        >
-          Blog
-        </LinkBtn>
-      </Str>
-      <ThemeBtn>
-        <ToggleBtn />
-      </ThemeBtn>
-      <TopBtn>▲</TopBtn>
+      <Phase>
+        <StoggleWrap>
+          <ToggleBtn />
+        </StoggleWrap>
+        <span>ABOUT ME</span>
+        <SLink>
+          <LinkBtn
+            onClick={() => {
+              window.open("https://github.com/ikhyeons");
+            }}
+          >
+            GH
+          </LinkBtn>
+          <LinkBtn
+            onClick={() => {
+              window.open("https://blog.ikhyeons.net/resume");
+            }}
+          >
+            Blog
+          </LinkBtn>
+        </SLink>
+      </Phase>
+
+      <TopBtn
+        onClick={() => {
+          window.scrollTo({ top: 0 });
+        }}
+      >
+        ▲
+      </TopBtn>
     </>
   );
 }

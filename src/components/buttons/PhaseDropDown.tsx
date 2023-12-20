@@ -8,7 +8,7 @@ const DropDown = styled(ScircleBtn)`
   font-size: 1.4rem;
   color: #ff577a;
   display: flex;
-  flex-direction: column;
+
   &:before {
     display: block;
     margin-bottom: 3px;
