@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const Ssection = styled.section`
@@ -19,7 +19,18 @@ const Ssection = styled.section`
 `;
 
 function Section2() {
-  return <Ssection></Ssection>;
+  const sectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    var intersectionObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].intersectionRatio <= 0) {
+        console.log("사라짐2");
+        return;
+      }
+      console.log("보임2");
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+  }, []);
+  return <Ssection ref={sectionRef}></Ssection>;
 }
 
 export default Section2;

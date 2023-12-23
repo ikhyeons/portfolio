@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import BabylonWrap from "../../../babylon/BabylonWrap";
+import { useEffect, useRef } from "react";
 const Ssection = styled.section`
   position: sticky;
   top: 0;
@@ -47,8 +48,22 @@ const Comment = styled.div`
 //ff577a
 
 function Section1() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    var intersectionObserver = new IntersectionObserver(function (entries) {
+      // intersectionRatio가 0이라는 것은 대상을 볼 수 없다는 것이므로
+      // 아무것도 하지 않음
+      if (entries[0].intersectionRatio < 0) {
+        console.log("사라짐1");
+        return;
+      }
+
+      console.log("보임1");
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+  }, []);
   return (
-    <Ssection>
+    <Ssection ref={sectionRef}>
       <Info>
         <Developer>FrontEnd Developer</Developer>
         <Comment>

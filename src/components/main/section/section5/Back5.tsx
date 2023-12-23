@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Card from "./Card";
 import projectData from "../../../../projectData";
+import { useRef, useEffect } from "react";
 
 const Ssection = styled.section`
   position: sticky;
@@ -29,8 +30,19 @@ const ScardWrap = styled.div`
 `;
 
 function Section5() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    var intersectionObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].intersectionRatio <= 0) {
+        console.log("사라짐3");
+        return;
+      }
+      console.log("보임3");
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+  }, []);
   return (
-    <Ssection>
+    <Ssection ref={sectionRef}>
       <ScardWrap>
         {projectData.map((data, i) => (
           <Card data={data} key={i} />

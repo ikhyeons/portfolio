@@ -9,4 +9,11 @@ export const AProjectPhase = atom({
   key: "projectPhase",
   default: 0,
 });
+
+export const AcurrentPosition = atom<
+  "ABOUT ME" | "Skills" | "Projects" | "Contact me"
+>({
+  key: "currentPosition",
+  default: "ABOUT ME",
+});
 export default {};

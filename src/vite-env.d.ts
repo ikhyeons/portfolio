@@ -20,8 +20,20 @@ declare global {
 
   interface ImodalState {
     isOn: boolean;
-    type: null | "skill" | "project";
+    type: null | "skill" | "project" | "more";
     detail: SkillDetail | IprojectData.title | null;
+  }
+
+  interface ImoreData {
+    title: string;
+    img: string;
+    period: string;
+    skills: {
+      fe: string[];
+      be: string[];
+      deploy: string[];
+    };
+    summary: string;
   }
 }
 

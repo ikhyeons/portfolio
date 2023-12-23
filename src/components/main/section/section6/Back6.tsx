@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRef, useEffect } from "react";
 import BabylonWrap from "../../../babylon/BabylonWrap";
 const Ssection = styled.section`
   display: flex;
@@ -45,8 +46,20 @@ const BabylonBox = styled.div`
 `;
 
 function Section6() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    var intersectionObserver = new IntersectionObserver(function (entries) {
+      if (entries[0].intersectionRatio <= 0) {
+        console.log("사라짐4");
+        return;
+      }
+      console.log("보임4");
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+  }, []);
+
   return (
-    <Ssection>
+    <Ssection ref={sectionRef}>
       <Thank>Thank You</Thank>
       {/* <BabylonBox>
         <BabylonWrap />

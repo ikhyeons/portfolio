@@ -4,6 +4,7 @@ import ProjectPaper from "./inner/ProjectPaper";
 import { useEffect, useRef } from "react";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { AModalState, AProjectPhase } from "../../utils/recoilStore/atom";
+import MorePaper from "./inner/MorePaper";
 const SModalWrap = styled.div<{
   $modalState: ImodalState;
 }>`
@@ -51,7 +52,13 @@ function ModalWrap() {
         resetModal();
       }}
     >
-      {modalState.type == "skill" ? <SkillPaper /> : <ProjectPaper />}
+      {modalState.type == "skill" ? (
+        <SkillPaper />
+      ) : modalState.type == "project" ? (
+        <ProjectPaper />
+      ) : (
+        <MorePaper />
+      )}
     </SModalWrap>
   );
 }

@@ -31,7 +31,7 @@ function Card({ data }: { data?: IprojectData }) {
   function paperClickHandler() {
     setModalState({
       isOn: true,
-      type: "project",
+      type: data?.title ? "project" : "more",
       detail: data?.title ? data.title : "More",
     });
   }
