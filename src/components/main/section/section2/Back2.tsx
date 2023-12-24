@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
@@ -8,7 +8,7 @@ const Ssection = styled.section`
   top: 0;
   height: 100dvh;
   margin-bottom: 0px;
-  background-image: url("../background/paper.jpg");
+  background-image: url("./background/paper.jpg");
   isolation: isolate;
   &:after {
     content: "";
@@ -25,16 +25,15 @@ function Section2() {
   const [currentPosition, setCurrentPosition] =
     useRecoilState(AcurrentPosition);
 
-  useEffect(() => {
-    var intersectionObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].intersectionRatio <= 0.1) {
-        if (currentPosition == "SKILLS") setCurrentPosition("ABOUT ME");
-        return;
-      }
-      setCurrentPosition("SKILLS");
-    });
-    sectionRef.current && intersectionObserver.observe(sectionRef.current);
-  }, []);
+  const intersectionObserver = new IntersectionObserver(function (entries) {
+    if (entries[0].intersectionRatio <= 0.1) {
+      if (currentPosition == "SKILLS") setCurrentPosition("ABOUT ME");
+      return;
+    }
+    setCurrentPosition("SKILLS");
+  });
+  sectionRef.current && intersectionObserver.observe(sectionRef.current);
+
   return <Ssection ref={sectionRef}></Ssection>;
 }
 

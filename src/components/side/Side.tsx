@@ -27,6 +27,12 @@ const TopBtn = styled(ScircleBtn)`
   background: rgb(30, 40, 30);
   font-size: 1.4rem;
   color: #ff577a;
+
+  @media screen and (max-width: 768px) {
+    margin: 30px 30px;
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 const Phase = styled.div`

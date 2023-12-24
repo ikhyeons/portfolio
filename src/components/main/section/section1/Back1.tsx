@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BabylonWrap from "../../../babylon/BabylonWrap";
 const Ssection = styled.section`
   position: sticky;
   top: 0;
@@ -7,7 +6,7 @@ const Ssection = styled.section`
   height: 100dvh;
   margin-bottom: 60px;
   transform: translateX(0%);
-  background-image: url("../background/paper.jpg");
+  background-image: url("./background/paper.jpg");
   isolation: isolate;
   &:after {
     content: "";
@@ -19,11 +18,11 @@ const Ssection = styled.section`
   }
 `;
 
-const BabylonDiv = styled.div`
-  margin: 10vh 0;
-  width: 80%;
-  height: 80vh;
-`;
+// const BabylonDiv = styled.div`
+//   margin: 10vh 0;
+//   width: 80%;
+//   height: 80vh;
+// `;
 
 const Info = styled.div`
   position: absolute;

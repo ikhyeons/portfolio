@@ -20,6 +20,7 @@ const Scard = styled.div`
 
 const Stitle = styled.div`
   font-size: 2rem;
+  text-align: center;
 `;
 
 const Speriod = styled.div`

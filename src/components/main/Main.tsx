@@ -6,6 +6,7 @@ import Back3 from "./section/section3/Back3";
 import Back4 from "./section/section4/Back4";
 import Back5 from "./section/section5/Back5";
 import Sides from "../side/Side";
+import Header from "../header/Header";
 
 const Smain = styled.main`
   width: 81vw;
@@ -18,6 +19,7 @@ const Smain = styled.main`
 function Main() {
   return (
     <>
+      <Header />
       <Smain>
         <Back1 />
         <Back2 />

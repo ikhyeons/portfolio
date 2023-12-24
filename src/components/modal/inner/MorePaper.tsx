@@ -1,9 +1,7 @@
-import React from "react";
 import MoreCard from "./MoreCard";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { AProjectPhase } from "../../../utils/recoilStore/atom";
-import { AlphaState } from "babylonjs";
 import { moreData } from "../../../moreData";
 const Swrap = styled.div`
   position: relative;

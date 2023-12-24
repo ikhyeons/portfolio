@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const Sp = styled.p`
@@ -7,6 +6,11 @@ const Sp = styled.p`
 `;
 const Scard = styled.div`
   color: black;
+`;
+
+const Sskill = styled.div`
+  color: black;
+  margin-left: 10px;
 `;
 const Sdescript = styled.div`
   padding: 10px;
@@ -31,19 +35,21 @@ function CardMain({
     <Scard>
       <Simg
         key={0}
-        src={`/Imgs/${currentProjectData.type}/${currentProjectData.img}`}
+        src={`./Imgs/${currentProjectData.type}/${currentProjectData.img}`}
         alt={currentProjectData.title}
       />
-      Skills
-      {currentProjectData.skills.fe.length != 0 && (
-        <Sp> FE : {currentProjectData.skills.fe.join(", ")}</Sp>
-      )}
-      {currentProjectData.skills.be.length != 0 && (
-        <Sp> BE : {currentProjectData.skills.be.join(", ")}</Sp>
-      )}
-      {currentProjectData.skills.deploy.length != 0 && (
-        <Sp>Deploy : {currentProjectData.skills.deploy.join(", ")}</Sp>
-      )}
+      <Sskill>
+        Skills
+        {currentProjectData.skills.fe.length != 0 && (
+          <Sp> FE : {currentProjectData.skills.fe.join(", ")}</Sp>
+        )}
+        {currentProjectData.skills.be.length != 0 && (
+          <Sp> BE : {currentProjectData.skills.be.join(", ")}</Sp>
+        )}
+        {currentProjectData.skills.deploy.length != 0 && (
+          <Sp>Deploy : {currentProjectData.skills.deploy.join(", ")}</Sp>
+        )}
+      </Sskill>
       <Sdescript style={{ color: "black" }}>
         {currentProjectData.summary}
       </Sdescript>

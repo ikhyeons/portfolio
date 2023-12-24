@@ -33,7 +33,7 @@ function ProjectCard({
   return (
     <Scard>
       <Simg
-        src={`/Imgs/${currentProjectData.type}/${data.img}`}
+        src={`./Imgs/${currentProjectData.type}/${data.img}`}
         alt={data.name}
       />
       <Sdescript style={{ color: "black" }}>{data.description}</Sdescript>

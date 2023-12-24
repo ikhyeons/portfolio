@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useRef, useEffect } from "react";
-import BabylonWrap from "../../../babylon/BabylonWrap";
+import { useRef } from "react";
+
 import { useRecoilState } from "recoil";
 import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
 const Ssection = styled.section`
@@ -10,7 +10,7 @@ const Ssection = styled.section`
   top: 0;
   height: 100dvh;
   margin-top: 600px;
-  background-image: url("../background/paper.jpg");
+  background-image: url("./background/paper.jpg");
   isolation: isolate;
   padding: 40px;
   &:after {
@@ -46,28 +46,27 @@ const Info = styled.div`
   }
 `;
 
-const BabylonBox = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: 120px;
-  transform: translateX(-50%);
-  width: 100%;
-`;
+// const BabylonBox = styled.div`
+//   position: absolute;
+//   left: 50%;
+//   bottom: 120px;
+//   transform: translateX(-50%);
+//   width: 100%;
+// `;
 
 function Section6() {
   const sectionRef = useRef<HTMLElement>(null);
   const [currentPosition, setCurrentPosition] =
     useRecoilState(AcurrentPosition);
-  useEffect(() => {
-    var intersectionObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].intersectionRatio <= 0.1) {
-        if (currentPosition == "CONTACT ME") setCurrentPosition("PROJECTS");
-        return;
-      }
-      setCurrentPosition("CONTACT ME");
-    });
-    sectionRef.current && intersectionObserver.observe(sectionRef.current);
-  }, []);
+
+  const intersectionObserver = new IntersectionObserver(function (entries) {
+    if (entries[0].intersectionRatio <= 0.1) {
+      if (currentPosition == "CONTACT ME") setCurrentPosition("PROJECTS");
+      return;
+    }
+    setCurrentPosition("CONTACT ME");
+  });
+  sectionRef.current && intersectionObserver.observe(sectionRef.current);
 
   return (
     <Ssection ref={sectionRef}>

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import projectData from "../../../projectData";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
@@ -92,7 +91,7 @@ const SremoconRight = styled.div<{ $phase: number; $length: number }>`
 `;
 
 function ProjectPaper() {
-  const [modalState, setModalState] = useRecoilState(AModalState);
+  const [modalState] = useRecoilState(AModalState);
   const [phase, setPhase] = useRecoilState(AProjectPhase);
   const currentProjectData = projectData.filter(
     (data) => data.title == modalState.detail

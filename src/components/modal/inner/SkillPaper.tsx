@@ -1,4 +1,3 @@
-import React from "react";
 import { skillList } from "../../../skillData";
 import Gage from "./Gage";
 import styled from "styled-components";
@@ -32,7 +31,7 @@ const Sname = styled.h2`
 `;
 const Sskill = styled.div``;
 function SkillPaper() {
-  const [modalState, setModalState] = useRecoilState(AModalState);
+  const [modalState] = useRecoilState(AModalState);
   console.log(modalState.detail);
   console.log(skillList);
   return (
@@ -43,7 +42,7 @@ function SkillPaper() {
       }}
     >
       <Stitle>{modalState.detail}</Stitle>
-      {skillList.map((data, i) => {
+      {skillList.map((data) => {
         if (data.detail == modalState.detail) {
           return data.skillList.map((data2, i) => (
             <Sskill key={i}>

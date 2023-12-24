@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SkillPaper from "./inner/SkillPaper";
 import ProjectPaper from "./inner/ProjectPaper";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useRecoilState, useResetRecoilState } from "recoil";
 import { AModalState, AProjectPhase } from "../../utils/recoilStore/atom";
 import MorePaper from "./inner/MorePaper";
@@ -26,8 +26,8 @@ const SModalWrap = styled.div<{
 `;
 
 function ModalWrap() {
-  const [modalState, setModalState] = useRecoilState(AModalState);
-  const [phase, setPhase] = useRecoilState(AProjectPhase);
+  const [modalState] = useRecoilState(AModalState);
+  const [, setPhase] = useRecoilState(AProjectPhase);
   const resetModal = useResetRecoilState(AModalState);
   const preventScroll = (e: Event) => {
     e.preventDefault();

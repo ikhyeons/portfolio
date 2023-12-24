@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import useDelay from "../../../utils/hooks/useActive";
 import { FadeIn, gageUp } from "../../../animation";
 
 const SGage = styled.div`

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { AModalState } from "../../../../utils/recoilStore/atom";
 import { useRecoilState } from "recoil";
@@ -8,7 +7,7 @@ const Ssection = styled.section`
   top: 80dvh;
   height: 67dvh;
   margin-bottom: 0px;
-  background-image: url("../background/paper.jpg");
+  background-image: url("./background/paper.jpg");
   border-top: 5px solid rgb(30, 40, 30);
   isolation: isolate;
   box-shadow: -10px 0px 30px black;
@@ -117,7 +116,7 @@ const Spaper = styled.div<{ $type: "Front-End" | "Back-End" | "else" }>`
 `;
 
 function Section3() {
-  const [modalState, setModalState] = useRecoilState(AModalState);
+  const [, setModalState] = useRecoilState(AModalState);
   function paperClickHandler(detail: SkillDetail) {
     setModalState({ isOn: true, type: "skill", detail: detail });
   }

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 const Stitle = styled.h2`
   display: inline;
@@ -26,7 +25,7 @@ const Simg = styled.img`
   }
 `;
 const Sdescript = styled.div`
-  color: black;
++  color: black;
   padding: 10px;
 `;
 function MoreCard({ data }: { data: ImoreData }) {
@@ -34,7 +33,7 @@ function MoreCard({ data }: { data: ImoreData }) {
     <div>
       <Stitle>{data.title}</Stitle>
       <Speriod>{data.period}</Speriod>
-      <Simg src={`/Imgs/more/${data.img}`} alt={data.title} />
+      <Simg src={`./Imgs/more/${data.img}`} alt={data.title} />
       <Sdescript>{data.summary}</Sdescript>
     </div>
   );

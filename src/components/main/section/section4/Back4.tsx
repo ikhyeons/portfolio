@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Card from "./Card";
 import projectData from "../../../../projectData";
-import { useRef, useEffect } from "react";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRef } from "react";
+import { useRecoilState } from "recoil";
 import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
 const Ssection = styled.section`
   position: sticky;
   top: 0;
   height: 100dvh;
   margin-top: 100px;
-  background-image: url("../background/paper.jpg");
+  background-image: url("./background/paper.jpg");
   isolation: isolate;
 
   &:after {
@@ -28,6 +28,7 @@ const ScardWrap = styled.div`
   height: calc(100dvh - 20px);
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 49.5% 49.5%;
+  padding-top: 60px;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 49.5% 49.5%;
@@ -39,16 +40,16 @@ function Section5() {
   const sectionRef = useRef<HTMLElement>(null);
   const [currentPosition, setCurrentPosition] =
     useRecoilState(AcurrentPosition);
-  useEffect(() => {
-    var intersectionObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].intersectionRatio <= 0.1) {
-        if (currentPosition == "PROJECTS") setCurrentPosition("SKILLS");
-        return;
-      }
-      setCurrentPosition("PROJECTS");
-    });
-    sectionRef.current && intersectionObserver.observe(sectionRef.current);
-  }, []);
+
+  const intersectionObserver = new IntersectionObserver(function (entries) {
+    if (entries[0].intersectionRatio <= 0.1) {
+      if (currentPosition == "PROJECTS") setCurrentPosition("SKILLS");
+      return;
+    }
+    setCurrentPosition("PROJECTS");
+  });
+  sectionRef.current && intersectionObserver.observe(sectionRef.current);
+
   return (
     <Ssection ref={sectionRef}>
       <ScardWrap>
