@@ -1,16 +1,18 @@
 import styled from "styled-components";
-import Card from "./Card";
-import projectData from "../../../../projectData";
 import { useRef, useEffect } from "react";
-
+import BabylonWrap from "../../../babylon/BabylonWrap";
+import { useRecoilState } from "recoil";
+import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
 const Ssection = styled.section`
+  display: flex;
   position: sticky;
+  box-sizing: border-box;
   top: 0;
   height: 100dvh;
-  margin-top: 100px;
+  margin-top: 600px;
   background-image: url("../background/paper.jpg");
   isolation: isolate;
-
+  padding: 40px;
   &:after {
     content: "";
     position: absolute;
@@ -21,36 +23,65 @@ const Ssection = styled.section`
   }
 `;
 
-const ScardWrap = styled.div`
-  padding: 10px;
-  display: grid;
-  height: calc(100dvh - 20px);
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 49.5% 49.5%;
+const Thank = styled.div`
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  font-size: 4rem;
 `;
 
-function Section5() {
+const Info = styled.div`
+  font-size: 33vw%;
+  position: absolute;
+  bottom: 10px;
+  & > span {
+    margin-right: 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+    & > span {
+      font-size: 1rem;
+      display: block;
+    }
+  }
+`;
+
+const BabylonBox = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 120px;
+  transform: translateX(-50%);
+  width: 100%;
+`;
+
+function Section6() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentPosition, setCurrentPosition] =
+    useRecoilState(AcurrentPosition);
   useEffect(() => {
     var intersectionObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].intersectionRatio <= 0) {
-        console.log("사라짐3");
+      if (entries[0].intersectionRatio <= 0.1) {
+        if (currentPosition == "CONTACT ME") setCurrentPosition("PROJECTS");
         return;
       }
-      console.log("보임3");
+      setCurrentPosition("CONTACT ME");
     });
     sectionRef.current && intersectionObserver.observe(sectionRef.current);
   }, []);
+
   return (
     <Ssection ref={sectionRef}>
-      <ScardWrap>
-        {projectData.map((data, i) => (
-          <Card data={data} key={i} />
-        ))}
-        <Card />
-      </ScardWrap>
+      <Thank>Thank You</Thank>
+      {/* <BabylonBox>
+        <BabylonWrap />
+      </BabylonBox> */}
+      <Info>
+        <span>skantrkwl789@naver.com</span>
+        <span>https://github.com/ikhyeons</span>
+        <span>https://blog.ikhyeons.net</span>
+      </Info>
     </Ssection>
   );
 }
 
-export default Section5;
+export default Section6;

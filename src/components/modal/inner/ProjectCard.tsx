@@ -13,6 +13,10 @@ const Simg = styled.img`
   height: 90%;
   background: yellow;
   margin-bottom: 10px;
+
+  @media screen and (max-width: 768px) {
+    width: 80dvw;
+  }
 `;
 
 function ProjectCard({

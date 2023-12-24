@@ -19,6 +19,11 @@ const Swrap = styled.div`
   border-radius: 5px;
   box-shadow: 3px 3px 5px black;
   color: black;
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+    margin-left: 20px;
+  }
 `;
 
 const Stitle = styled.h2`

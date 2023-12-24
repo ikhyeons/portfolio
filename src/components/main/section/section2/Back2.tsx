@@ -1,5 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
 
 const Ssection = styled.section`
   position: sticky;
@@ -20,13 +22,16 @@ const Ssection = styled.section`
 
 function Section2() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentPosition, setCurrentPosition] =
+    useRecoilState(AcurrentPosition);
+
   useEffect(() => {
     var intersectionObserver = new IntersectionObserver(function (entries) {
-      if (entries[0].intersectionRatio <= 0) {
-        console.log("사라짐2");
+      if (entries[0].intersectionRatio <= 0.1) {
+        if (currentPosition == "SKILLS") setCurrentPosition("ABOUT ME");
         return;
       }
-      console.log("보임2");
+      setCurrentPosition("SKILLS");
     });
     sectionRef.current && intersectionObserver.observe(sectionRef.current);
   }, []);

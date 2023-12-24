@@ -11,7 +11,7 @@ export const AProjectPhase = atom({
 });
 
 export const AcurrentPosition = atom<
-  "ABOUT ME" | "Skills" | "Projects" | "Contact me"
+  "ABOUT ME" | "SKILLS" | "PROJECTS" | "CONTACT ME"
 >({
   key: "currentPosition",
   default: "ABOUT ME",

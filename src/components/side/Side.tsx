@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import ScircleBtn from "../buttons/CircleBtn";
 import ToggleBtn from "../buttons/ToggleBtn";
-
+import { useRecoilState } from "recoil";
+import { AcurrentPosition } from "../../utils/recoilStore/atom";
 const SLink = styled.div`
   margin-bottom: 30px;
   display: flex;
@@ -44,19 +45,26 @@ const Phase = styled.div`
   border-left: 2px solid #ff577a;
   font-size: 3vw;
   line-height: 10px;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const StoggleWrap = styled.div`
   margin-top: 50px;
 `;
 function Sides() {
+  const [currentPosition, setCurrentPosition] =
+    useRecoilState(AcurrentPosition);
+
   return (
     <>
       <Phase>
         <StoggleWrap>
           <ToggleBtn />
         </StoggleWrap>
-        <span>ABOUT ME</span>
+        <span>{currentPosition}</span>
         <SLink>
           <LinkBtn
             onClick={() => {
@@ -78,6 +86,7 @@ function Sides() {
       <TopBtn
         onClick={() => {
           window.scrollTo({ top: 0 });
+          setCurrentPosition("ABOUT ME");
         }}
       >
         ▲
