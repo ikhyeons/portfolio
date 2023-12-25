@@ -88,7 +88,7 @@ function Sides() {
           </LinkBtn>
           <LinkBtn
             onClick={() => {
-              window.open("https://blog.ikhyeons.net/resume");
+              window.open("https://blog.ikhyeons.net");
             }}
           >
             Blog
