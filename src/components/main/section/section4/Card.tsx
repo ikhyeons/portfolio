@@ -19,7 +19,7 @@ const Scard = styled.div`
 `;
 
 const Stitle = styled.div`
-  font-size: 2rem;
+  font-size: 1.3rem;
   text-align: center;
 `;
 

@@ -46,27 +46,10 @@ const Info = styled.div`
   }
 `;
 
-// const BabylonBox = styled.div`
-//   position: absolute;
-//   left: 50%;
-//   bottom: 120px;
-//   transform: translateX(-50%);
-//   width: 100%;
-// `;
-
 function Section6() {
   const sectionRef = useRef<HTMLElement>(null);
   const [currentPosition, setCurrentPosition] =
     useRecoilState(AcurrentPosition);
-
-  const intersectionObserver = new IntersectionObserver(function (entries) {
-    if (entries[0].intersectionRatio <= 0.1) {
-      if (currentPosition == "CONTACT ME") setCurrentPosition("PROJECTS");
-      return;
-    }
-    setCurrentPosition("CONTACT ME");
-  });
-  sectionRef.current && intersectionObserver.observe(sectionRef.current);
 
   return (
     <Ssection ref={sectionRef}>

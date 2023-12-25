@@ -8,7 +8,6 @@ const Ssection = styled.section`
   position: sticky;
   top: 0;
   height: 100dvh;
-  margin-top: 100px;
   background-image: url("./background/paper.jpg");
   isolation: isolate;
 
@@ -28,11 +27,12 @@ const ScardWrap = styled.div`
   height: calc(100dvh - 20px);
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 49.5% 49.5%;
-  padding-top: 60px;
 
   @media screen and (max-width: 768px) {
+    margin-top: 100px;
+    padding-top: 60px;
     grid-template-columns: 49.5% 49.5%;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 31% 31% 31%;
   }
 `;
 
@@ -40,15 +40,6 @@ function Section5() {
   const sectionRef = useRef<HTMLElement>(null);
   const [currentPosition, setCurrentPosition] =
     useRecoilState(AcurrentPosition);
-
-  const intersectionObserver = new IntersectionObserver(function (entries) {
-    if (entries[0].intersectionRatio <= 0.1) {
-      if (currentPosition == "PROJECTS") setCurrentPosition("SKILLS");
-      return;
-    }
-    setCurrentPosition("PROJECTS");
-  });
-  sectionRef.current && intersectionObserver.observe(sectionRef.current);
 
   return (
     <Ssection ref={sectionRef}>
