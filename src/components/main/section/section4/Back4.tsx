@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Card from "./Card";
 import projectData from "../../../../projectData";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
 const Ssection = styled.section`
@@ -38,9 +38,24 @@ const ScardWrap = styled.div`
 
 function Section5() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentPosition, setCurrentPosition] =
-    useRecoilState(AcurrentPosition);
+  const [, setCurrentPosition] = useRecoilState(AcurrentPosition);
+  let first = true;
 
+  function setDown(before: number, current: 1 | 2 | 3 | 4) {
+    console.log("change " + before + "to " + current);
+    console.log(first);
+    if (!first) setCurrentPosition(current);
+    first = false;
+  }
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      entries[0].isIntersecting ? setCurrentPosition(3) : setDown(3, 2);
+      entries[0].isIntersecting ? console.log(1) : console.log(2);
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+    return () => intersectionObserver.unobserve(sectionRef.current!);
+  }, []);
   return (
     <Ssection ref={sectionRef}>
       <ScardWrap>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import Back1 from "./section/section1/Back1";
 import Back2 from "./section/section2/Back2";
 import Back3 from "./section/section3/Back3";

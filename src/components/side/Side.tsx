@@ -64,13 +64,20 @@ function Sides() {
   const [currentPosition, setCurrentPosition] =
     useRecoilState(AcurrentPosition);
 
+  enum cpEnum {
+    "ABOUT ME" = 1,
+    "SKILLS",
+    "PROJECTS",
+    "CONTACT ME",
+  }
+
   return (
     <>
       <Phase>
         <StoggleWrap>
           <ToggleBtn />
         </StoggleWrap>
-        <span>{currentPosition}</span>
+        <span>{cpEnum[currentPosition]}</span>
         <SLink>
           <LinkBtn
             onClick={() => {
@@ -92,7 +99,7 @@ function Sides() {
       <TopBtn
         onClick={() => {
           window.scrollTo({ top: 0 });
-          setCurrentPosition("ABOUT ME");
+          setCurrentPosition(1);
         }}
       >
         ▲

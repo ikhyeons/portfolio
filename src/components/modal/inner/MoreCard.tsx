@@ -25,7 +25,7 @@ const Simg = styled.img`
   }
 `;
 const Sdescript = styled.div`
-+  color: black;
+  color: black;
   padding: 10px;
 `;
 function MoreCard({ data }: { data: ImoreData }) {

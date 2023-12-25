@@ -10,10 +10,9 @@ export const AProjectPhase = atom({
   default: 0,
 });
 
-export const AcurrentPosition = atom<
-  "ABOUT ME" | "SKILLS" | "PROJECTS" | "CONTACT ME"
->({
+export const AcurrentPosition = atom<1 | 2 | 3 | 4>({
   key: "currentPosition",
-  default: "ABOUT ME",
+  default: 1,
 });
+
 export default {};

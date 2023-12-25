@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
@@ -22,17 +22,25 @@ const Ssection = styled.section`
 
 function Section2() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentPosition, setCurrentPosition] =
-    useRecoilState(AcurrentPosition);
+  const [, setCurrentPosition] = useRecoilState(AcurrentPosition);
 
-  const intersectionObserver = new IntersectionObserver(function (entries) {
-    if (entries[0].intersectionRatio <= 0.1) {
-      if (currentPosition == "SKILLS") setCurrentPosition("ABOUT ME");
-      return;
-    }
-    setCurrentPosition("SKILLS");
-  });
-  sectionRef.current && intersectionObserver.observe(sectionRef.current);
+  let first = true;
+  function setDown(before: number, current: 1 | 2 | 3 | 4) {
+    console.log("change " + before + "to " + current);
+    console.log(first);
+    if (!first) setCurrentPosition(current);
+    first = false;
+  }
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      entries[0].isIntersecting ? setCurrentPosition(2) : setDown(2, 1);
+      entries[0].isIntersecting ? console.log(1) : console.log(2);
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+
+    return () => intersectionObserver.unobserve(sectionRef.current!);
+  }, []);
 
   return <Ssection ref={sectionRef}></Ssection>;
 }

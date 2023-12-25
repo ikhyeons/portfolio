@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 import { useRecoilState } from "recoil";
 import { AcurrentPosition } from "../../../../utils/recoilStore/atom";
@@ -28,6 +28,7 @@ const Thank = styled.div`
   left: 10%;
   top: 30%;
   font-size: 4rem;
+  color: #ff556a;
 `;
 
 const Info = styled.div`
@@ -48,8 +49,24 @@ const Info = styled.div`
 
 function Section6() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [currentPosition, setCurrentPosition] =
-    useRecoilState(AcurrentPosition);
+  const [, setCurrentPosition] = useRecoilState(AcurrentPosition);
+  let first = true;
+
+  function setDown(before: number, current: 1 | 2 | 3 | 4) {
+    console.log("change " + before + "to " + current);
+    console.log(first);
+    if (!first) setCurrentPosition(current);
+    first = false;
+  }
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      entries[0].isIntersecting ? setCurrentPosition(4) : setDown(4, 3);
+      entries[0].isIntersecting ? console.log(1) : console.log(2);
+    });
+    sectionRef.current && intersectionObserver.observe(sectionRef.current);
+    return () => intersectionObserver.unobserve(sectionRef.current!);
+  }, []);
 
   return (
     <Ssection ref={sectionRef}>

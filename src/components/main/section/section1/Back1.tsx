@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const Ssection = styled.section`
   position: sticky;
   top: 0;

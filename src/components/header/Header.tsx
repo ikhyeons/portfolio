@@ -39,10 +39,18 @@ const LinkBtn = styled(ScircleBtn)`
 
 function Header() {
   const [currentPosition] = useRecoilState(AcurrentPosition);
+
+  enum cpEnum {
+    "ABOUT ME" = 1,
+    "SKILLS",
+    "PROJECTS",
+    "CONTACT ME",
+  }
+
   return (
     <Sheader>
       <ToggleBtn2 />
-      <Stitle>{currentPosition}</Stitle>
+      <Stitle>{cpEnum[currentPosition]}</Stitle>
       <Sright>
         <LinkBtn
           onClick={() => {
